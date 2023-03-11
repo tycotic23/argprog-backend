@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author soltommy
  */
 @RestController
+@RequestMapping("/skills")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
 public class SkillController {
@@ -51,5 +53,12 @@ public class SkillController {
     @GetMapping("/traer/{skill}")
     public Skill buscar(@PathVariable String skill) {
         return skills.buscar(skill);
+    }
+    
+    @GetMapping("/restore")
+    public void restaurar(){
+        //borrar los skills actuales
+        //crear objetos por defecto
+        //guardar todos los nuevos skills
     }
 }
