@@ -4,8 +4,8 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.Skill;
-import com.portfolio.backend.service.SkillService;
+import com.portfolio.backend.model.Proyecto;
+import com.portfolio.backend.service.ProyectoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,42 +20,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/skills")
+@RequestMapping("/proyectos")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
-public class SkillController {
+public class ProyectoController {
     @Autowired
-    SkillService skills;
+    ProyectoService proyectos;
     
     @PostMapping("/crear")
-    public Skill crear(@RequestBody Skill skill) {
-        return skills.crear(skill);
+    public Proyecto crear(@RequestBody Proyecto proyecto) {
+        return proyectos.crear(proyecto);
     }
 
     @GetMapping("/traer")
-    public List<Skill> verTodos() {
-        return skills.verTodos();
+    public List<Proyecto> verTodos() {
+        return proyectos.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{skill}")
-    public String eliminar(@PathVariable String skill) {
-        return skills.eliminar(skill);
+    @DeleteMapping("/eliminar/{Proyecto}")
+    public String eliminar(@PathVariable long id) {
+        return proyectos.eliminar(id);
     }
     
     @PutMapping("/editar/{anterior}")
-    public Skill editar(@PathVariable String anterior, @RequestBody Skill nueva) {
-        return skills.reemplazar(anterior, nueva);
+    public Proyecto editar(@PathVariable long id, @RequestBody Proyecto proyecto) {
+        return proyectos.editar(id, proyecto);
     }
 
-    @GetMapping("/traer/{skill}")
-    public Skill buscar(@PathVariable String skill) {
-        return skills.buscar(skill);
+    @GetMapping("/traer/{Proyecto}")
+    public Proyecto buscar(@PathVariable long id) {
+        return proyectos.buscar(id);
     }
     
     @GetMapping("/restore")
     public void restaurar(){
-        //borrar los skills actuales
+        //borrar los proyectos actuales
         //crear objetos por defecto
-        //guardar todos los nuevos skills
+        //guardar todos los nuevos proyectos
     }
 }

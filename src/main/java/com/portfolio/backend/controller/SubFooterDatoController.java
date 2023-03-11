@@ -4,8 +4,8 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.Skill;
-import com.portfolio.backend.service.SkillService;
+import com.portfolio.backend.model.SubFooterDato;
+import com.portfolio.backend.service.SubFooterDatoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,42 +20,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/skills")
+@RequestMapping("/subFooterDatos")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
-public class SkillController {
+public class SubFooterDatoController {
     @Autowired
-    SkillService skills;
+    SubFooterDatoService subFooterDatos;
     
     @PostMapping("/crear")
-    public Skill crear(@RequestBody Skill skill) {
-        return skills.crear(skill);
+    public SubFooterDato crear(@RequestBody SubFooterDato subFooterDato) {
+        return subFooterDatos.crear(subFooterDato);
     }
 
     @GetMapping("/traer")
-    public List<Skill> verTodos() {
-        return skills.verTodos();
+    public List<SubFooterDato> verTodos() {
+        return subFooterDatos.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{skill}")
-    public String eliminar(@PathVariable String skill) {
-        return skills.eliminar(skill);
+    @DeleteMapping("/eliminar/{SubFooterDato}")
+    public String eliminar(@PathVariable long id) {
+        return subFooterDatos.eliminar(id);
     }
     
     @PutMapping("/editar/{anterior}")
-    public Skill editar(@PathVariable String anterior, @RequestBody Skill nueva) {
-        return skills.reemplazar(anterior, nueva);
+    public SubFooterDato editar(@PathVariable long id, @RequestBody SubFooterDato subFooterDato) {
+        return subFooterDatos.editar(id, subFooterDato);
     }
 
-    @GetMapping("/traer/{skill}")
-    public Skill buscar(@PathVariable String skill) {
-        return skills.buscar(skill);
+    @GetMapping("/traer/{SubFooterDato}")
+    public SubFooterDato buscar(@PathVariable long id) {
+        return subFooterDatos.buscar(id);
     }
     
     @GetMapping("/restore")
     public void restaurar(){
-        //borrar los skills actuales
+        //borrar los subFooterDatos actuales
         //crear objetos por defecto
-        //guardar todos los nuevos skills
+        //guardar todos los nuevos subFooterDatos
     }
 }

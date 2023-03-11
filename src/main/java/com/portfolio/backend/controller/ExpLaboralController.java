@@ -4,8 +4,8 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.Skill;
-import com.portfolio.backend.service.SkillService;
+import com.portfolio.backend.model.ExpLaboral;
+import com.portfolio.backend.service.ExpLaboralService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,42 +20,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/skills")
+@RequestMapping("/expLaborales")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
-public class SkillController {
+public class ExpLaboralController {
     @Autowired
-    SkillService skills;
+    ExpLaboralService expLaborals;
     
     @PostMapping("/crear")
-    public Skill crear(@RequestBody Skill skill) {
-        return skills.crear(skill);
+    public ExpLaboral crear(@RequestBody ExpLaboral expLaboral) {
+        return expLaborals.crear(expLaboral);
     }
 
     @GetMapping("/traer")
-    public List<Skill> verTodos() {
-        return skills.verTodos();
+    public List<ExpLaboral> verTodos() {
+        return expLaborals.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{skill}")
-    public String eliminar(@PathVariable String skill) {
-        return skills.eliminar(skill);
+    @DeleteMapping("/eliminar/{ExpLaboral}")
+    public String eliminar(@PathVariable long id) {
+        return expLaborals.eliminar(id);
     }
     
     @PutMapping("/editar/{anterior}")
-    public Skill editar(@PathVariable String anterior, @RequestBody Skill nueva) {
-        return skills.reemplazar(anterior, nueva);
+    public ExpLaboral editar(@PathVariable long id, @RequestBody ExpLaboral expLaboral) {
+        return expLaborals.editar(id, expLaboral);
     }
 
-    @GetMapping("/traer/{skill}")
-    public Skill buscar(@PathVariable String skill) {
-        return skills.buscar(skill);
+    @GetMapping("/traer/{ExpLaboral}")
+    public ExpLaboral buscar(@PathVariable long id) {
+        return expLaborals.buscar(id);
     }
     
     @GetMapping("/restore")
     public void restaurar(){
-        //borrar los skills actuales
+        //borrar los expLaborals actuales
         //crear objetos por defecto
-        //guardar todos los nuevos skills
+        //guardar todos los nuevos expLaborals
     }
 }

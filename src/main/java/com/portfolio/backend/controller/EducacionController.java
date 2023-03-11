@@ -4,8 +4,8 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.Skill;
-import com.portfolio.backend.service.SkillService;
+import com.portfolio.backend.model.Educacion;
+import com.portfolio.backend.service.EducacionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,42 +20,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/skills")
+@RequestMapping("/educacion")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
-public class SkillController {
-    @Autowired
-    SkillService skills;
+public class EducacionController {
+     @Autowired
+    EducacionService educacions;
     
     @PostMapping("/crear")
-    public Skill crear(@RequestBody Skill skill) {
-        return skills.crear(skill);
+    public Educacion crear(@RequestBody Educacion educacion) {
+        return educacions.crear(educacion);
     }
 
     @GetMapping("/traer")
-    public List<Skill> verTodos() {
-        return skills.verTodos();
+    public List<Educacion> verTodos() {
+        return educacions.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{skill}")
-    public String eliminar(@PathVariable String skill) {
-        return skills.eliminar(skill);
+    @DeleteMapping("/eliminar/{Educacion}")
+    public String eliminar(@PathVariable long id) {
+        return educacions.eliminar(id);
     }
     
     @PutMapping("/editar/{anterior}")
-    public Skill editar(@PathVariable String anterior, @RequestBody Skill nueva) {
-        return skills.reemplazar(anterior, nueva);
+    public Educacion editar(@PathVariable long id, @RequestBody Educacion educacion) {
+        return educacions.editar(id, educacion);
     }
 
-    @GetMapping("/traer/{skill}")
-    public Skill buscar(@PathVariable String skill) {
-        return skills.buscar(skill);
+    @GetMapping("/traer/{Educacion}")
+    public Educacion buscar(@PathVariable long id) {
+        return educacions.buscar(id);
     }
     
     @GetMapping("/restore")
     public void restaurar(){
-        //borrar los skills actuales
+        //borrar los educacions actuales
         //crear objetos por defecto
-        //guardar todos los nuevos skills
+        //guardar todos los nuevos educacions
     }
 }
