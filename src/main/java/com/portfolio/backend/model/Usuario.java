@@ -5,12 +5,7 @@
 package com.portfolio.backend.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import java.util.Calendar;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +18,8 @@ public class Usuario {
     private String contraseña;
     //los permisos van del mas bajo 0 (solo ver) al 1 (editor/admin), de agregar mas niveles se suman
     private int permisos;
+    
+    public Usuario(){
+        
+    }
 }

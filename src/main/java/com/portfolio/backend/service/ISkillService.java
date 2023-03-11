@@ -7,10 +7,7 @@ package com.portfolio.backend.service;
 import com.portfolio.backend.model.Skill;
 import java.util.List;
 
-/**
- *
- * @author soltommy
- */
+
 public interface ISkillService {
     public Skill crear(Skill skill);
     public List<Skill> verTodos();
