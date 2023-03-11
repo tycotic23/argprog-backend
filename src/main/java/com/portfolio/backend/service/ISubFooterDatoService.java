@@ -4,12 +4,12 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.SubFooterDato;
+import com.portfolio.backend.model.Subfooterdato;
 import java.util.List;
 public interface ISubFooterDatoService {
-      public SubFooterDato crear(SubFooterDato subFooterDato);
-    public List<SubFooterDato> verTodos();
+      public Subfooterdato crear(Subfooterdato subFooterDato);
+    public List<Subfooterdato> verTodos();
     public String eliminar(long id);
-    public SubFooterDato buscar(long id);
-    public SubFooterDato editar(long id,SubFooterDato subFooterDato);
+    public Subfooterdato buscar(long id);
+    public Subfooterdato editar(long id,Subfooterdato subFooterDato);
 }

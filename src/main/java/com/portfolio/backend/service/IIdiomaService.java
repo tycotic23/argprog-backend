@@ -11,5 +11,5 @@ public interface IIdiomaService {
     public List<Idioma> verTodos();
     public String eliminar(String idioma);
     public Idioma buscar(String idioma);
-    public Idioma editar(String idioma,Idioma modicacion);
+    public Idioma reemplazar(String anterior,Idioma nuevo);
 }

@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Conocimiento {
     @Id
     private String nombre;
-    private String logoUrl;
+    private String logourl;
     private String categoria;
     
     public Conocimiento(){

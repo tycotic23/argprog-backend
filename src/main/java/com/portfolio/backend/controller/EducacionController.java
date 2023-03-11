@@ -37,17 +37,17 @@ public class EducacionController {
         return educacions.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{Educacion}")
+    @DeleteMapping("/eliminar/{id}")
     public String eliminar(@PathVariable long id) {
         return educacions.eliminar(id);
     }
     
-    @PutMapping("/editar/{anterior}")
+    @PutMapping("/editar/{id}")
     public Educacion editar(@PathVariable long id, @RequestBody Educacion educacion) {
         return educacions.editar(id, educacion);
     }
 
-    @GetMapping("/traer/{Educacion}")
+    @GetMapping("/traer/{id}")
     public Educacion buscar(@PathVariable long id) {
         return educacions.buscar(id);
     }

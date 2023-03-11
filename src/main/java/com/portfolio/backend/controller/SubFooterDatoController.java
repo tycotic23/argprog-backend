@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.SubFooterDato;
+import com.portfolio.backend.model.Subfooterdato;
 import com.portfolio.backend.service.SubFooterDatoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/subFooterDatos")
+@RequestMapping("/subfooterdatos")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
 public class SubFooterDatoController {
@@ -28,27 +28,27 @@ public class SubFooterDatoController {
     SubFooterDatoService subFooterDatos;
     
     @PostMapping("/crear")
-    public SubFooterDato crear(@RequestBody SubFooterDato subFooterDato) {
+    public Subfooterdato crear(@RequestBody Subfooterdato subFooterDato) {
         return subFooterDatos.crear(subFooterDato);
     }
 
     @GetMapping("/traer")
-    public List<SubFooterDato> verTodos() {
+    public List<Subfooterdato> verTodos() {
         return subFooterDatos.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{SubFooterDato}")
+    @DeleteMapping("/eliminar/{id}")
     public String eliminar(@PathVariable long id) {
         return subFooterDatos.eliminar(id);
     }
     
-    @PutMapping("/editar/{anterior}")
-    public SubFooterDato editar(@PathVariable long id, @RequestBody SubFooterDato subFooterDato) {
+    @PutMapping("/editar/{id}")
+    public Subfooterdato editar(@PathVariable long id, @RequestBody Subfooterdato subFooterDato) {
         return subFooterDatos.editar(id, subFooterDato);
     }
 
-    @GetMapping("/traer/{SubFooterDato}")
-    public SubFooterDato buscar(@PathVariable long id) {
+    @GetMapping("/traer/{id}")
+    public Subfooterdato buscar(@PathVariable long id) {
         return subFooterDatos.buscar(id);
     }
     

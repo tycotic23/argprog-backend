@@ -37,17 +37,17 @@ public class IdiomaController {
         return idiomas.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{Idioma}")
+    @DeleteMapping("/eliminar/{idioma}")
     public String eliminar(@PathVariable String idioma) {
         return idiomas.eliminar(idioma);
     }
     
     @PutMapping("/editar/{anterior}")
-    public Idioma editar(@PathVariable String idioma, @RequestBody Idioma modificacion) {
-        return idiomas.editar(idioma, modificacion);
+    public Idioma editar(@PathVariable String anterior, @RequestBody Idioma nuevo) {
+        return idiomas.reemplazar(anterior, nuevo);
     }
 
-    @GetMapping("/traer/{Idioma}")
+    @GetMapping("/traer/{idioma}")
     public Idioma buscar(@PathVariable String idioma) {
         return idiomas.buscar(idioma);
     }

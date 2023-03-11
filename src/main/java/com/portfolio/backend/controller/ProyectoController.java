@@ -37,17 +37,17 @@ public class ProyectoController {
         return proyectos.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{Proyecto}")
+    @DeleteMapping("/eliminar/{id}")
     public String eliminar(@PathVariable long id) {
         return proyectos.eliminar(id);
     }
     
-    @PutMapping("/editar/{anterior}")
+    @PutMapping("/editar/{id}")
     public Proyecto editar(@PathVariable long id, @RequestBody Proyecto proyecto) {
         return proyectos.editar(id, proyecto);
     }
 
-    @GetMapping("/traer/{Proyecto}")
+    @GetMapping("/traer/{id}")
     public Proyecto buscar(@PathVariable long id) {
         return proyectos.buscar(id);
     }

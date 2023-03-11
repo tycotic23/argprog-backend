@@ -17,22 +17,22 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class ExpLaboral {
+public class Explaboral {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     
-    private String logoUrl;
+    private String logourl;
     private String puesto;
     private String referencias;
     private String empresa;
     private String descripcion;
     @Temporal(TemporalType.DATE)
-    private Calendar fechaIni;
+    private Calendar fechaini;
     @Temporal(TemporalType.DATE)
-    private Calendar fechaFin;
+    private Calendar fechafin;
     
-    public ExpLaboral(){
+    public Explaboral(){
         
     }
 }

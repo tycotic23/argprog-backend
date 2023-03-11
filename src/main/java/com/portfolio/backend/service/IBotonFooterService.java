@@ -4,12 +4,12 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.BotonFooter;
+import com.portfolio.backend.model.Botonfooter;
 import java.util.List;
 public interface IBotonFooterService {
-      public BotonFooter crear(BotonFooter botonFooter);
-    public List<BotonFooter> verTodos();
+      public Botonfooter crear(Botonfooter botonFooter);
+    public List<Botonfooter> verTodos();
     public String eliminar(String logo);
-    public BotonFooter buscar(String logo);
-    public BotonFooter editar(String logo,BotonFooter botonFooter);
+    public Botonfooter buscar(String logo);
+    public Botonfooter reemplazar(String anterior,Botonfooter nuevo);
 }

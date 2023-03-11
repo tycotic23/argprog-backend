@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.BotonFooter;
+import com.portfolio.backend.model.Botonfooter;
 import com.portfolio.backend.service.BotonFooterService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/botonFooters")
+@RequestMapping("/botonesfooter")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
 public class BotonFooterController {
@@ -28,27 +28,27 @@ public class BotonFooterController {
     BotonFooterService botonFooters;
     
     @PostMapping("/crear")
-    public BotonFooter crear(@RequestBody BotonFooter botonFooter) {
+    public Botonfooter crear(@RequestBody Botonfooter botonFooter) {
         return botonFooters.crear(botonFooter);
     }
 
     @GetMapping("/traer")
-    public List<BotonFooter> verTodos() {
+    public List<Botonfooter> verTodos() {
         return botonFooters.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{BotonFooter}")
+    @DeleteMapping("/eliminar/{logo}")
     public String eliminar(@PathVariable String logo) {
         return botonFooters.eliminar(logo);
     }
     
     @PutMapping("/editar/{anterior}")
-    public BotonFooter editar(@PathVariable String logo, @RequestBody BotonFooter botonFooter) {
-        return botonFooters.editar(logo, botonFooter);
+    public Botonfooter editar(@PathVariable String anterior, @RequestBody Botonfooter nuevo) {
+        return botonFooters.reemplazar(anterior, nuevo);
     }
 
-    @GetMapping("/traer/{BotonFooter}")
-    public BotonFooter buscar(@PathVariable String logo) {
+    @GetMapping("/traer/{logo}")
+    public Botonfooter buscar(@PathVariable String logo) {
         return botonFooters.buscar(logo);
     }
     

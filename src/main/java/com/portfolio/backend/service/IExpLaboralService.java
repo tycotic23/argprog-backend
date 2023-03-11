@@ -4,12 +4,12 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.ExpLaboral;
+import com.portfolio.backend.model.Explaboral;
 import java.util.List;
 public interface IExpLaboralService {
-      public ExpLaboral crear(ExpLaboral expLaboral);
-    public List<ExpLaboral> verTodos();
+      public Explaboral crear(Explaboral expLaboral);
+    public List<Explaboral> verTodos();
     public String eliminar(long id);
-    public ExpLaboral buscar(long id);
-    public ExpLaboral editar(long id,ExpLaboral expLaboral);
+    public Explaboral buscar(long id);
+    public Explaboral editar(long id,Explaboral expLaboral);
 }

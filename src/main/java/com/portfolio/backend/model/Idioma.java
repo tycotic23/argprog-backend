@@ -13,9 +13,9 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 public class Idioma {
+    private int nivel;
     @Id
     private String idioma;
-    private int nivel;
     
     public Idioma(){
         

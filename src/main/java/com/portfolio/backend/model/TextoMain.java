@@ -11,12 +11,12 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class TextoMain {
+public class Textomain {
     @Id
     private String nombre;
     private String texto;
     
-    public TextoMain(){
+    public Textomain(){
     
     }
 }

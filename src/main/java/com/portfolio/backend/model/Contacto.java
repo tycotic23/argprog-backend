@@ -14,8 +14,8 @@ import lombok.Setter;
 @Entity
 public class Contacto {
     @Id
-    private String redSocial;
-    private String logoUrl;
+    private String redsocial;
+    private String logourl;
     private String url;
     private String texto;
     

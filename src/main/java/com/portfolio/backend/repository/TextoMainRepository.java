@@ -4,12 +4,12 @@
  */
 package com.portfolio.backend.repository;
 
-import com.portfolio.backend.model.TextoMain;
+import com.portfolio.backend.model.Textomain;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface TextoMainRepository extends JpaRepository<TextoMain, String>  {
+public interface TextoMainRepository extends JpaRepository<Textomain, String>  {
     
 }

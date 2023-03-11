@@ -14,16 +14,16 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class SubFooterDato {
+public class Subfooterdato {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     
-    private String iconoUrl;
+    private String iconourl;
     private String url;
     private String texto;
     
-    public SubFooterDato(){
+    public Subfooterdato(){
         
     }
 }

@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.TextoMain;
+import com.portfolio.backend.model.Textomain;
 import com.portfolio.backend.service.TextoMainService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/textoMains")
+@RequestMapping("/textosmain")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
 public class TextoMainController {
@@ -28,27 +28,27 @@ public class TextoMainController {
     TextoMainService textoMains;
     
     @PostMapping("/crear")
-    public TextoMain crear(@RequestBody TextoMain textoMain) {
+    public Textomain crear(@RequestBody Textomain textoMain) {
         return textoMains.crear(textoMain);
     }
 
     @GetMapping("/traer")
-    public List<TextoMain> verTodos() {
+    public List<Textomain> verTodos() {
         return textoMains.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{TextoMain}")
+    @DeleteMapping("/eliminar/{nombre}")
     public String eliminar(@PathVariable String nombre) {
         return textoMains.eliminar(nombre);
     }
     
     @PutMapping("/editar/{anterior}")
-    public TextoMain editar(@PathVariable String nombre, @RequestBody TextoMain textoMain) {
-        return textoMains.editar(nombre, textoMain);
+    public Textomain editar(@PathVariable String anterior, @RequestBody Textomain textoMain) {
+        return textoMains.reemplazar(anterior, textoMain);
     }
 
-    @GetMapping("/traer/{TextoMain}")
-    public TextoMain buscar(@PathVariable String nombre) {
+    @GetMapping("/traer/{nombre}")
+    public Textomain buscar(@PathVariable String nombre) {
         return textoMains.buscar(nombre);
     }
     

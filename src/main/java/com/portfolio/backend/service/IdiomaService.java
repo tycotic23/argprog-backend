@@ -38,8 +38,8 @@ public class IdiomaService implements IIdiomaService{
     }
 
     @Override
-    public Idioma editar(String idioma, Idioma modificacion) {
-        modificacion.setIdioma(idioma);
-        return Idiomas.save(modificacion);
+    public Idioma reemplazar(String anterior, Idioma nuevo) {
+        eliminar(anterior);
+        return Idiomas.save(nuevo);
     }
 }

@@ -4,12 +4,12 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.TextoMain;
+import com.portfolio.backend.model.Textomain;
 import java.util.List;
 public interface ITextoMainService {
-      public TextoMain crear(TextoMain textoMain);
-    public List<TextoMain> verTodos();
+      public Textomain crear(Textomain textoMain);
+    public List<Textomain> verTodos();
     public String eliminar(String nombre);
-    public TextoMain buscar(String nombre);
-    public TextoMain editar(String nombre,TextoMain textoMain);
+    public Textomain buscar(String nombre);
+    public Textomain reemplazar(String anterior,Textomain textoMain);
 }

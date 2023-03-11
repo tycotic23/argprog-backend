@@ -37,17 +37,17 @@ public class ContactoController {
         return contactos.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{Contacto}")
+    @DeleteMapping("/eliminar/{nombre}")
     public String eliminar(@PathVariable String nombre) {
         return contactos.eliminar(nombre);
     }
     
-    @PutMapping("/editar/{anterior}")
+    @PutMapping("/editar/{nombre}")
     public Contacto editar(@PathVariable String nombre, @RequestBody Contacto contacto) {
         return contactos.editar(nombre, contacto);
     }
 
-    @GetMapping("/traer/{Contacto}")
+    @GetMapping("/traer/{nombre}")
     public Contacto buscar(@PathVariable String nombre) {
         return contactos.buscar(nombre);
     }

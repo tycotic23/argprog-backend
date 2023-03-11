@@ -4,12 +4,12 @@
  */
 package com.portfolio.backend.repository;
 
-import com.portfolio.backend.model.SubFooterDato;
+import com.portfolio.backend.model.Subfooterdato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface SubFooterDatoRepository extends JpaRepository<SubFooterDato, Long> {
+public interface SubFooterDatoRepository extends JpaRepository<Subfooterdato, Long> {
     
 }

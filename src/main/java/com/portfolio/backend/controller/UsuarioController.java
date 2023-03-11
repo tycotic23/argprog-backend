@@ -37,17 +37,17 @@ public class UsuarioController {
         return usuarios.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{Usuario}")
+    @DeleteMapping("/eliminar/{usuario}")
     public String eliminar(@PathVariable String usuario) {
         return usuarios.eliminar(usuario);
     }
     
-    @PutMapping("/editar/{anterior}")
+    @PutMapping("/editar/{usuario}")
     public Usuario editar(@PathVariable String usuario, @RequestBody Usuario actualizacion) {
         return usuarios.editar(usuario, actualizacion);
     }
 
-    @GetMapping("/traer/{Usuario}")
+    @GetMapping("/traer/{usuario}")
     public Usuario buscar(@PathVariable String usuario) {
         return usuarios.buscar(usuario);
     }

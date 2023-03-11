@@ -37,17 +37,17 @@ public class ConocimientoController {
         return conocimientos.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{Conocimiento}")
+    @DeleteMapping("/eliminar/{nombre}")
     public String eliminar(@PathVariable String nombre) {
         return conocimientos.eliminar(nombre);
     }
     
-    @PutMapping("/editar/{anterior}")
+    @PutMapping("/editar/{nombre}")
     public Conocimiento editar(@PathVariable String nombre, @RequestBody Conocimiento conocimiento) {
         return conocimientos.editar(nombre, conocimiento);
     }
 
-    @GetMapping("/traer/{Conocimiento}")
+    @GetMapping("/traer/{nombre}")
     public Conocimiento buscar(@PathVariable String nombre) {
         return conocimientos.buscar(nombre);
     }

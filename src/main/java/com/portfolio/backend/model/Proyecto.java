@@ -24,11 +24,11 @@ public class Proyecto {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     
-    private String pictureUrl;
+    private String pictureurl;
     private String titulo;
     private String descripcion;
-    private boolean botonVer;
-    private String botonUrl;
+    private boolean botonver;
+    private String botonurl;
     
     public Proyecto(){
         

@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.TextoMain;
+import com.portfolio.backend.model.Textomain;
 import com.portfolio.backend.repository.TextoMainRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ public class TextoMainService implements ITextoMainService{
     TextoMainRepository TextoMains;
 
     @Override
-    public TextoMain crear(TextoMain textoMain) {
+    public Textomain crear(Textomain textoMain) {
         return TextoMains.save(textoMain); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<TextoMain> verTodos() {
+    public List<Textomain> verTodos() {
         return TextoMains.findAll(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -33,13 +33,13 @@ public class TextoMainService implements ITextoMainService{
     }
 
     @Override
-    public TextoMain buscar(String nombre) {
+    public Textomain buscar(String nombre) {
         return TextoMains.findById(nombre).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public TextoMain editar(String nombre, TextoMain textoMain) {
-        textoMain.setNombre(nombre);
+    public Textomain reemplazar(String anterior, Textomain textoMain) {
+        textoMain.setNombre(anterior);
         return TextoMains.save(textoMain);
     }
 }

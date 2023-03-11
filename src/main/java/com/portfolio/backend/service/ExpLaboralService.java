@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.ExpLaboral;
+import com.portfolio.backend.model.Explaboral;
 import com.portfolio.backend.repository.ExpLaboralRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ public class ExpLaboralService implements IExpLaboralService{
     ExpLaboralRepository ExpLaborals;
 
     @Override
-    public ExpLaboral crear(ExpLaboral expLaboral) {
+    public Explaboral crear(Explaboral expLaboral) {
         return ExpLaborals.save(expLaboral); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<ExpLaboral> verTodos() {
+    public List<Explaboral> verTodos() {
         return ExpLaborals.findAll(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -33,12 +33,12 @@ public class ExpLaboralService implements IExpLaboralService{
     }
 
     @Override
-    public ExpLaboral buscar(long id) {
+    public Explaboral buscar(long id) {
         return ExpLaborals.findById(id).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public ExpLaboral editar(long id, ExpLaboral expLaboral) {
+    public Explaboral editar(long id, Explaboral expLaboral) {
         expLaboral.setId(id);
         return ExpLaborals.save(expLaboral);
     }

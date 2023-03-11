@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.BotonFooter;
+import com.portfolio.backend.model.Botonfooter;
 import com.portfolio.backend.repository.BotonFooterRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ public class BotonFooterService implements IBotonFooterService {
     BotonFooterRepository BotonFooters;
 
     @Override
-    public BotonFooter crear(BotonFooter botonFooter) {
+    public Botonfooter crear(Botonfooter botonFooter) {
         return BotonFooters.save(botonFooter); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<BotonFooter> verTodos() {
+    public List<Botonfooter> verTodos() {
         return BotonFooters.findAll(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -33,14 +33,14 @@ public class BotonFooterService implements IBotonFooterService {
     }
 
     @Override
-    public BotonFooter buscar(String botonFooter) {
+    public Botonfooter buscar(String botonFooter) {
         return BotonFooters.findById(botonFooter).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public BotonFooter editar(String logo, BotonFooter botonFooter) {
-        botonFooter.setLogoUrl(logo);
-        return BotonFooters.save(botonFooter);
+    public Botonfooter reemplazar(String anterior, Botonfooter nuevo) {
+        eliminar(anterior);
+        return crear(nuevo);
     }
 
     

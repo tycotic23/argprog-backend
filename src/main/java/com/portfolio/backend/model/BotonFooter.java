@@ -12,12 +12,17 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class BotonFooter {
+public class Botonfooter {
     @Id
-    private String logoUrl;
-    private String puesto;
+    private String logo;
+    private String url;
     
-    public BotonFooter(){
+    public Botonfooter(){
         
+    }
+    
+    public Botonfooter(String logo, String url){
+        this.logo=logo;
+        this.url=url;
     }
 }

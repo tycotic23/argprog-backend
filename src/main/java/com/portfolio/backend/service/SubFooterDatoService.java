@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.service;
 
-import com.portfolio.backend.model.SubFooterDato;
+import com.portfolio.backend.model.Subfooterdato;
 import com.portfolio.backend.repository.SubFooterDatoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class SubFooterDatoService implements ISubFooterDatoService{
     SubFooterDatoRepository SubFooterDatos;
 
     @Override
-    public SubFooterDato crear(SubFooterDato subFooterDato) {
+    public Subfooterdato crear(Subfooterdato subFooterDato) {
         return SubFooterDatos.save(subFooterDato); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<SubFooterDato> verTodos() {
+    public List<Subfooterdato> verTodos() {
         return SubFooterDatos.findAll(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -32,12 +32,12 @@ public class SubFooterDatoService implements ISubFooterDatoService{
     }
 
     @Override
-    public SubFooterDato buscar(long id) {
+    public Subfooterdato buscar(long id) {
         return SubFooterDatos.findById(id).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public SubFooterDato editar(long id, SubFooterDato subFooterDato) {
+    public Subfooterdato editar(long id, Subfooterdato subFooterDato) {
         subFooterDato.setId(id);
         return SubFooterDatos.save(subFooterDato);
     }

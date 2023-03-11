@@ -22,11 +22,11 @@ public class Educacion {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     
-    private String logoUrl;
+    private String logourl;
     @Temporal(TemporalType.DATE)
-    private Calendar fechaIni;
+    private Calendar fechaini;
     @Temporal(TemporalType.DATE)
-    private Calendar fechaFin;
+    private Calendar fechafin;
     private String institucion;
     private String titulo;
     

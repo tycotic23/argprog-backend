@@ -39,7 +39,7 @@ public class ContactoService implements IContactoService{
 
     @Override
     public Contacto editar(String redSocial, Contacto contacto) {
-        contacto.setRedSocial(redSocial);
+        contacto.setRedsocial(redSocial);
         return Contactos.save(contacto);
     }
 }

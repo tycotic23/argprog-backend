@@ -4,7 +4,7 @@
  */
 package com.portfolio.backend.controller;
 
-import com.portfolio.backend.model.ExpLaboral;
+import com.portfolio.backend.model.Explaboral;
 import com.portfolio.backend.service.ExpLaboralService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/expLaborales")
+@RequestMapping("/explaborales")
 @CrossOrigin(origins="http://localhost:4200/")
 //@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
 public class ExpLaboralController {
@@ -28,27 +28,27 @@ public class ExpLaboralController {
     ExpLaboralService expLaborals;
     
     @PostMapping("/crear")
-    public ExpLaboral crear(@RequestBody ExpLaboral expLaboral) {
+    public Explaboral crear(@RequestBody Explaboral expLaboral) {
         return expLaborals.crear(expLaboral);
     }
 
     @GetMapping("/traer")
-    public List<ExpLaboral> verTodos() {
+    public List<Explaboral> verTodos() {
         return expLaborals.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{ExpLaboral}")
+    @DeleteMapping("/eliminar/{id}")
     public String eliminar(@PathVariable long id) {
         return expLaborals.eliminar(id);
     }
     
-    @PutMapping("/editar/{anterior}")
-    public ExpLaboral editar(@PathVariable long id, @RequestBody ExpLaboral expLaboral) {
+    @PutMapping("/editar/{id}")
+    public Explaboral editar(@PathVariable long id, @RequestBody Explaboral expLaboral) {
         return expLaborals.editar(id, expLaboral);
     }
 
-    @GetMapping("/traer/{ExpLaboral}")
-    public ExpLaboral buscar(@PathVariable long id) {
+    @GetMapping("/traer/{id}")
+    public Explaboral buscar(@PathVariable long id) {
         return expLaborals.buscar(id);
     }
     
