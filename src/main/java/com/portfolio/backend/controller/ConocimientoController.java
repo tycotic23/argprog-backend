@@ -7,6 +7,7 @@ package com.portfolio.backend.controller;
 import com.portfolio.backend.model.Conocimiento;
 import com.portfolio.backend.service.ConocimientoService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,8 +34,8 @@ public class ConocimientoController {
     }
 
     @GetMapping("/traer")
-    public List<Conocimiento> verTodos() {
-        return conocimientos.verTodos();
+    public Map<String,List<Conocimiento>> verTodos() {
+        return conocimientos.agruparPorCategoria();
     }
 
     @DeleteMapping("/eliminar/{nombre}")

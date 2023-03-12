@@ -6,7 +6,10 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Conocimiento;
 import com.portfolio.backend.repository.ConocimientoRepository;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +44,15 @@ public class ConocimientoService implements IConocimientoService{
     public Conocimiento editar(String nombre, Conocimiento conocimiento) {
         conocimiento.setNombre(nombre);
         return Conocimientos.save(conocimiento);
+    }
+
+    @Override
+    public Map<String,List<Conocimiento>> agruparPorCategoria() {
+        Map<String,List<Conocimiento>> conocimientosAgrupados=new HashMap<>();
+        for (String category:Conocimientos.getCategoryList()){
+            conocimientosAgrupados.put(category,Conocimientos.getConocimientoListByCategory(category));
+        }
+        return conocimientosAgrupados;
     }
 
 }
