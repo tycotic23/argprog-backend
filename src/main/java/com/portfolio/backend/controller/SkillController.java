@@ -6,8 +6,10 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.Skill;
 import com.portfolio.backend.service.SkillService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +40,10 @@ public class SkillController {
     }
 
     @DeleteMapping("/eliminar/{skill}")
-    public String eliminar(@PathVariable String skill) {
-        return skills.eliminar(skill);
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String skill) {
+        HashMap<String,Boolean> estadoEliminado= new HashMap<>();
+        estadoEliminado.put(skills.eliminar(skill), true);
+        return ResponseEntity.ok(estadoEliminado);
     }
     
     @PutMapping("/editar/{anterior}")
@@ -53,9 +57,12 @@ public class SkillController {
     }
     
     @GetMapping("/restore")
-    public void restaurar(){
-        //borrar los skills actuales
+    public ResponseEntity<HashMap<String,Boolean>> restaurar(){
+        //borrar los contactos actuales
         //crear objetos por defecto
-        //guardar todos los nuevos skills
+        //guardar todos los nuevos contactos
+         HashMap<String,Boolean> estadoContactoRestaurado= new HashMap<>();
+        estadoContactoRestaurado.put(skills.restaurar(), true);
+        return ResponseEntity.ok(estadoContactoRestaurado);
     }
 }

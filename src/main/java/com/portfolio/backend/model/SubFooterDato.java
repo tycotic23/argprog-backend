@@ -23,6 +23,12 @@ public class Subfooterdato {
     private String url;
     private String texto;
     
+    public Subfooterdato(String iconourl, String url, String texto){
+        this.iconourl=iconourl;
+        this.url=url;
+        this.texto=texto;
+    }
+    
     public Subfooterdato(){
         
     }

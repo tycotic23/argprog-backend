@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Textomain;
 import com.portfolio.backend.repository.TextoMainRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,14 @@ public class TextoMainService implements ITextoMainService{
     public Textomain reemplazar(String anterior, Textomain textoMain) {
         textoMain.setNombre(anterior);
         return TextoMains.save(textoMain);
+    }
+    
+    @Override
+    public String restaurar() {
+        TextoMains.deleteAll();
+        List<Textomain> original=new ArrayList<>();
+        original.add(new Textomain("Tomas Stevan Balanda Wagner", "Me llamo Tomas Stevan Balanda Wagner. Freelancer desde finales de 2022. Pasé por varias carreras, siempre cercanas, de alguna manera, al desarrollo de videojuegos. Ya sea desde el área informática o artística. Durante 2022 comencé a formarme en desarrollo fullstack a partir del programa \"Argentina Programa\" con la intención de entrar a la industria de desarrollo de software. Aunque sin perder de vista el verdadero objetivo a alcanzar algún día: los videojuegos.","assets/foto-perfil.png"));
+        TextoMains.saveAll(original);
+        return "Restaurado con éxito";
     }
 }

@@ -12,4 +12,5 @@ public interface ITextoMainService {
     public String eliminar(String nombre);
     public Textomain buscar(String nombre);
     public Textomain reemplazar(String anterior,Textomain textoMain);
+    public String restaurar();
 }

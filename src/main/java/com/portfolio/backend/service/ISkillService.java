@@ -14,4 +14,5 @@ public interface ISkillService {
     public String eliminar(String skill);
     public Skill buscar(String skill);
     public Skill reemplazar(String anterior,Skill nueva);
+    public String restaurar();
 }

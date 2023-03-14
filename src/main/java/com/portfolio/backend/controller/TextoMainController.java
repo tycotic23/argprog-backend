@@ -6,8 +6,10 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.Textomain;
 import com.portfolio.backend.service.TextoMainService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +40,10 @@ public class TextoMainController {
     }
 
     @DeleteMapping("/eliminar/{nombre}")
-    public String eliminar(@PathVariable String nombre) {
-        return textoMains.eliminar(nombre);
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String nombre) {
+        HashMap<String,Boolean> estadoEliminado= new HashMap<>();
+        estadoEliminado.put(textoMains.eliminar(nombre), true);
+        return ResponseEntity.ok(estadoEliminado);
     }
     
     @PutMapping("/editar/{anterior}")
@@ -53,9 +57,12 @@ public class TextoMainController {
     }
     
     @GetMapping("/restore")
-    public void restaurar(){
-        //borrar los textoMains actuales
+    public ResponseEntity<HashMap<String,Boolean>> restaurar(){
+        //borrar los contactos actuales
         //crear objetos por defecto
-        //guardar todos los nuevos textoMains
+        //guardar todos los nuevos contactos
+         HashMap<String,Boolean> estadoContactoRestaurado= new HashMap<>();
+        estadoContactoRestaurado.put(textoMains.restaurar(), true);
+        return ResponseEntity.ok(estadoContactoRestaurado);
     }
 }

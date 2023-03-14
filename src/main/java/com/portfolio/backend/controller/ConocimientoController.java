@@ -6,9 +6,11 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.Conocimiento;
 import com.portfolio.backend.service.ConocimientoService;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,8 +41,10 @@ public class ConocimientoController {
     }
 
     @DeleteMapping("/eliminar/{nombre}")
-    public String eliminar(@PathVariable String nombre) {
-        return conocimientos.eliminar(nombre);
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String nombre) {
+        HashMap<String,Boolean> estadoEliminado= new HashMap<>();
+        estadoEliminado.put(conocimientos.eliminar(nombre), true);
+        return ResponseEntity.ok(estadoEliminado);
     }
     
     @PutMapping("/editar/{nombre}")
@@ -54,9 +58,12 @@ public class ConocimientoController {
     }
     
     @GetMapping("/restore")
-    public void restaurar(){
+    public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los conocimientos actuales
         //crear objetos por defecto
         //guardar todos los nuevos conocimientos
+         HashMap<String,Boolean> estadoConocimientoEliminado= new HashMap<>();
+        estadoConocimientoEliminado.put(conocimientos.restaurar(), true);
+        return ResponseEntity.ok(estadoConocimientoEliminado);
     }
 }

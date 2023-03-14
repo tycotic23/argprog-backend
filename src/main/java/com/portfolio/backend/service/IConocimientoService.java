@@ -14,4 +14,5 @@ public interface IConocimientoService {
     public String eliminar(String nombre);
     public Conocimiento buscar(String nombre);
     public Conocimiento editar(String nombre,Conocimiento conocimiento);
+    public String restaurar();
 }

@@ -30,6 +30,14 @@ public class Proyecto {
     private boolean botonver;
     private String botonurl;
     
+    public Proyecto(String pictureurl, String titulo, String descripcion, boolean botonver, String botonurl){
+        this.pictureurl=pictureurl;
+        this.titulo=titulo;
+        this.descripcion=descripcion;
+        this.botonver=botonver;
+        this.botonurl=botonurl;
+    }
+    
     public Proyecto(){
         
     }

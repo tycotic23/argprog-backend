@@ -6,8 +6,10 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.Subfooterdato;
 import com.portfolio.backend.service.SubFooterDatoService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +40,10 @@ public class SubFooterDatoController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable long id) {
-        return subFooterDatos.eliminar(id);
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
+        HashMap<String,Boolean> estadoEliminado= new HashMap<>();
+        estadoEliminado.put(subFooterDatos.eliminar(id), true);
+        return ResponseEntity.ok(estadoEliminado);
     }
     
     @PutMapping("/editar/{id}")
@@ -53,9 +57,12 @@ public class SubFooterDatoController {
     }
     
     @GetMapping("/restore")
-    public void restaurar(){
-        //borrar los subFooterDatos actuales
+    public ResponseEntity<HashMap<String,Boolean>> restaurar(){
+        //borrar los contactos actuales
         //crear objetos por defecto
-        //guardar todos los nuevos subFooterDatos
+        //guardar todos los nuevos contactos
+         HashMap<String,Boolean> estadoContactoRestaurado= new HashMap<>();
+        estadoContactoRestaurado.put(subFooterDatos.restaurar(), true);
+        return ResponseEntity.ok(estadoContactoRestaurado);
     }
 }

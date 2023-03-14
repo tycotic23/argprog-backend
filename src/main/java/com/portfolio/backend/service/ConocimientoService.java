@@ -54,5 +54,25 @@ public class ConocimientoService implements IConocimientoService{
         }
         return conocimientosAgrupados;
     }
+    
+    @Override
+    public String restaurar() {
+        Conocimientos.deleteAll();
+        List<Conocimiento> original=new ArrayList<>();
+        original.add(new Conocimiento("C/C++", "assets/lenguajes-01.png", "Panel1"));
+        original.add(new Conocimiento("Java", "assets/lenguajes-02.png", "Panel1"));
+        original.add(new Conocimiento("SQL", "assets/lenguajes-06.png", "Panel1"));
+        original.add(new Conocimiento("HTML", "assets/lenguajes-04.png", "Panel2"));
+        original.add(new Conocimiento("Javascript", "assets/lenguajes-05.png", "Panel2"));
+        original.add(new Conocimiento("CSS", "assets/lenguajes-07.png", "Panel2"));
+        original.add(new Conocimiento("Spring Boot", "assets/lenguajes-03.png", "Panel3"));
+        original.add(new Conocimiento("Angular", "assets/lenguajes-08.png", "Panel3"));
+        original.add(new Conocimiento("Photoshop", "assets/lenguajes-09.png", "Panel4"));
+        original.add(new Conocimiento("Illustrator", "assets/lenguajes-10.png", "Panel4"));
+        original.add(new Conocimiento("Blender", "assets/lenguajes-11.png", "Panel4"));
+        original.add(new Conocimiento("After Effects", "assets/lenguajes-12.png", "Panel4"));
+        Conocimientos.saveAll(original);
+        return "Restaurado con éxito";
+    }
 
 }

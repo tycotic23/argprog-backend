@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Skill;
 import com.portfolio.backend.repository.SkillRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,17 @@ public class SkillService implements ISkillService {
         return crear(nueva);
     }
 
-    
+    @Override
+    public String restaurar() {
+        skills.deleteAll();
+        List<Skill> original=new ArrayList<>();
+        original.add(new Skill("Proactividad"));
+        original.add(new Skill("Trabajo en equipo"));
+        original.add(new Skill("Responsabilidad"));
+        original.add(new Skill("Gestión del tiempo"));
+        original.add(new Skill("Comunicación"));
+        skills.saveAll(original);
+        return "Restaurado con éxito";
+    }
     
 }

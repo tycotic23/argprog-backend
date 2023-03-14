@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Subfooterdato;
 import com.portfolio.backend.repository.SubFooterDatoRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,15 @@ public class SubFooterDatoService implements ISubFooterDatoService{
     public Subfooterdato editar(long id, Subfooterdato subFooterDato) {
         subFooterDato.setId(id);
         return SubFooterDatos.save(subFooterDato);
+    }
+    
+    @Override
+    public String restaurar() {
+        SubFooterDatos.deleteAll();
+        List<Subfooterdato> original=new ArrayList<>();
+        original.add(new Subfooterdato("../assets/contactos-orejas-28.png", "mailto:magui.maggie@gmail.com", "magui.maggie@gmail.com"));
+        original.add(new Subfooterdato("../assets/contactos-orejas-27.png", "https://wa.me/5493417197518", "+54 9 341 719-7518"));
+        SubFooterDatos.saveAll(original);
+        return "Restaurado con éxito";
     }
 }

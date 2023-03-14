@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Contacto;
 import com.portfolio.backend.repository.ContactoRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,19 @@ public class ContactoService implements IContactoService{
     public Contacto editar(String redSocial, Contacto contacto) {
         contacto.setRedsocial(redSocial);
         return Contactos.save(contacto);
+    }
+    
+    @Override
+    public String restaurar() {
+        Contactos.deleteAll();
+        List<Contacto> original=new ArrayList<>();
+        original.add(new Contacto("Linkedin", "../assets/contactos-pag-iconos-07.png", "https://www.linkedin.com/in/tom%C3%A1s-stevan-balanda-wagner-0b313125a/", "Tomas Stevan Balanda Wagner"));
+        original.add(new Contacto("E-mail", "../assets/contactos-pag-iconos-05.png", "mailto:magui.maggie@gmail.com", "magui.maggie@gmail.com"));
+        original.add(new Contacto("Behance", "../assets/contactos-pag-iconos-06.png", "https://www.behance.net/tomasstevan", "Tomas Stevan Balanda Wagner"));
+        original.add(new Contacto("Teléfono", "../assets/contactos-pag-iconos-04.png", "https://wa.me/5493417197518", "+54 9 341 719-7518"));
+        original.add(new Contacto("Itch.io", "../assets/contactos-pag-iconos-08.png", "https://tycotic.itch.io/", "tycotic"));
+        original.add(new Contacto("Github", "../assets/contactos-pag-iconos-09.png", "https://github.com/tycotic23", "tycotic23"));
+        Contactos.saveAll(original);
+        return "Restaurado con éxito";
     }
 }

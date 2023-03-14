@@ -8,9 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import java.util.Calendar;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,10 +24,18 @@ public class Explaboral {
     private String referencias;
     private String empresa;
     private String descripcion;
-    @Temporal(TemporalType.DATE)
-    private Calendar fechaini;
-    @Temporal(TemporalType.DATE)
-    private Calendar fechafin;
+    private String fechaini;
+    private String fechafin;
+    
+    public Explaboral(String logourl,String puesto, String referencias, String empresa, String descripcion, String fechaini, String fechafin){
+        this.logourl=logourl;
+        this.puesto=puesto;
+        this.referencias=referencias;
+        this.empresa=empresa;
+        this.fechaini=fechaini;
+        this.fechafin=fechafin;
+        this.descripcion=descripcion;
+    }
     
     public Explaboral(){
         

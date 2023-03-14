@@ -12,4 +12,5 @@ public interface ISubFooterDatoService {
     public String eliminar(long id);
     public Subfooterdato buscar(long id);
     public Subfooterdato editar(long id,Subfooterdato subFooterDato);
+    public String restaurar();
 }

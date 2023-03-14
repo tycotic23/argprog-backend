@@ -6,8 +6,10 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.Botonfooter;
 import com.portfolio.backend.service.BotonFooterService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +40,10 @@ public class BotonFooterController {
     }
 
     @DeleteMapping("/eliminar/{logo}")
-    public String eliminar(@PathVariable String logo) {
-        return botonFooters.eliminar(logo);
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String logo) {
+        HashMap<String,Boolean> estadoEliminado= new HashMap<>();
+        estadoEliminado.put(botonFooters.eliminar(logo), true);
+        return ResponseEntity.ok(estadoEliminado);
     }
     
     @PutMapping("/editar/{anterior}")
@@ -53,9 +57,12 @@ public class BotonFooterController {
     }
     
     @GetMapping("/restore")
-    public void restaurar(){
+    public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los botonFooters actuales
         //crear objetos por defecto
         //guardar todos los nuevos botonFooters
+        HashMap<String,Boolean> estadobotonFooterEliminado= new HashMap<>();
+        estadobotonFooterEliminado.put(botonFooters.restaurar(), true);
+        return ResponseEntity.ok(estadobotonFooterEliminado);
     }
 }

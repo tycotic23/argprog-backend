@@ -8,9 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import java.util.Calendar;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,14 +20,20 @@ public class Educacion {
     private long id;
     
     private String logourl;
-    @Temporal(TemporalType.DATE)
-    private Calendar fechaini;
-    @Temporal(TemporalType.DATE)
-    private Calendar fechafin;
+    private String fechaini;
+    private String fechafin;
     private String institucion;
     private String titulo;
     
     public Educacion(){
         
+    }
+    
+    public Educacion(String logourl,String fechaini, String fechafin, String institucion, String titulo){
+        this.logourl=logourl;
+        this.fechaini=fechaini;
+        this.fechafin=fechafin;
+        this.institucion=institucion;
+        this.titulo=titulo;
     }
 }

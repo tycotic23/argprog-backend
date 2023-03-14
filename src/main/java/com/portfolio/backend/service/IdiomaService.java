@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Idioma;
 import com.portfolio.backend.repository.IdiomaRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,16 @@ public class IdiomaService implements IIdiomaService{
     public Idioma reemplazar(String anterior, Idioma nuevo) {
         eliminar(anterior);
         return Idiomas.save(nuevo);
+    }
+
+    @Override
+    public String restaurar() {
+        Idiomas.deleteAll();
+        List<Idioma> original=new ArrayList<>();
+        original.add(new Idioma("Español",100));
+        original.add(new Idioma("Inglés",50));
+        original.add(new Idioma("Alemán",10));
+        Idiomas.saveAll(original);
+        return "Restaurado con éxito";
     }
 }

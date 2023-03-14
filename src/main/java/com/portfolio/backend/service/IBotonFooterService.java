@@ -12,4 +12,5 @@ public interface IBotonFooterService {
     public String eliminar(String logo);
     public Botonfooter buscar(String logo);
     public Botonfooter reemplazar(String anterior,Botonfooter nuevo);
+    public String restaurar();
 }

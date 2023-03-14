@@ -12,4 +12,5 @@ public interface IIdiomaService {
     public String eliminar(String idioma);
     public Idioma buscar(String idioma);
     public Idioma reemplazar(String anterior,Idioma nuevo);
+    public String restaurar();
 }

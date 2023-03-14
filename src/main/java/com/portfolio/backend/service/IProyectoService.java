@@ -12,4 +12,5 @@ public interface IProyectoService {
     public String eliminar(long id);
     public Proyecto buscar(long id);
     public Proyecto editar(long id,Proyecto proyecto);
+    public String restaurar();
 }

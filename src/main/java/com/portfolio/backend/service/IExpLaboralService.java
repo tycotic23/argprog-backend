@@ -12,4 +12,5 @@ public interface IExpLaboralService {
     public String eliminar(long id);
     public Explaboral buscar(long id);
     public Explaboral editar(long id,Explaboral expLaboral);
+    public String restaurar();
 }

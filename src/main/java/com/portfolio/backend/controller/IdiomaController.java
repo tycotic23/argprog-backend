@@ -6,8 +6,11 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.Idioma;
 import com.portfolio.backend.service.IdiomaService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +31,10 @@ public class IdiomaController {
     IdiomaService idiomas;
     
     @PostMapping("/crear")
-    public Idioma crear(@RequestBody Idioma idioma) {
-        return idiomas.crear(idioma);
+    public ResponseEntity<Idioma> crear(@RequestBody Idioma idioma) {
+        if("".equals(idioma.getIdioma())) return new ResponseEntity<>(idioma,HttpStatus.LENGTH_REQUIRED);
+        if(idioma.getNivel()<1 || idioma.getNivel()>100) return new ResponseEntity<>(idioma,HttpStatus.NOT_ACCEPTABLE);
+        return new ResponseEntity<>(idiomas.crear(idioma),HttpStatus.OK);
     }
 
     @GetMapping("/traer")
@@ -38,8 +43,10 @@ public class IdiomaController {
     }
 
     @DeleteMapping("/eliminar/{idioma}")
-    public String eliminar(@PathVariable String idioma) {
-        return idiomas.eliminar(idioma);
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String idioma) {
+        HashMap<String,Boolean> estadoIdiomaEliminado= new HashMap<>();
+        estadoIdiomaEliminado.put(idiomas.eliminar(idioma), true);
+        return ResponseEntity.ok(estadoIdiomaEliminado);
     }
     
     @PutMapping("/editar/{anterior}")
@@ -53,9 +60,12 @@ public class IdiomaController {
     }
     
     @GetMapping("/restore")
-    public void restaurar(){
+    public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los idiomas actuales
         //crear objetos por defecto
         //guardar todos los nuevos idiomas
+        HashMap<String,Boolean> estadoIdiomaEliminado= new HashMap<>();
+        estadoIdiomaEliminado.put(idiomas.restaurar(), true);
+        return ResponseEntity.ok(estadoIdiomaEliminado);
     }
 }

@@ -15,6 +15,13 @@ public class Textomain {
     @Id
     private String nombre;
     private String texto;
+    private String fotourl;
+    
+    public Textomain(String nombre, String texto, String fotourl){
+        this.nombre=nombre;
+        this.texto=texto;
+        this.fotourl=fotourl;
+    }
     
     public Textomain(){
     

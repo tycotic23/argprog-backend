@@ -20,4 +20,9 @@ public class Idioma {
     public Idioma(){
         
     }
+    
+    public Idioma(String idioma, int nivel){
+        this.idioma=idioma;
+        this.nivel=nivel;
+    }
 }

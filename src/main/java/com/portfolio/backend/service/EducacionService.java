@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Educacion;
 import com.portfolio.backend.repository.EducacionRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,17 @@ public class EducacionService implements IEducacionService{
     public Educacion editar(long id, Educacion educacion) {
         educacion.setId(id);
         return Educacions.save(educacion);
+    }
+    
+    @Override
+    public String restaurar() {
+        Educacions.deleteAll();
+        List<Educacion> original=new ArrayList<>();
+        original.add(new Educacion("../assets/logo artes visuales.png","2017", "Actualidad", "Escuela provincial de artes visuales.", "Tecnicatura en diseño gráfico y comunicación visual"));
+        original.add(new Educacion("../assets/logo-fceia.png", "2020", "2019", "Facultad de Ciencias Exactas de la Universidad Nacional de Rosario.", "Licenciatura en ciencias de la computación. Incompleto."));
+        original.add(new Educacion("../assets/logoutnwhite.png", "2015", "2016", "Universidad Tecnológica Nacional.", "Ingeniería en sistemas. Incompleto."));
+        original.add(new Educacion("../assets/ic-logo-02.png", "2010", "2014", "Colegio Sagrado Corazón.", "Orientación producción de bienes y servicios. 2do mejor promedio."));
+        Educacions.saveAll(original);
+        return "Restaurado con éxito";
     }
 }

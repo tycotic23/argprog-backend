@@ -6,8 +6,10 @@ package com.portfolio.backend.controller;
 
 import com.portfolio.backend.model.Educacion;
 import com.portfolio.backend.service.EducacionService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +40,10 @@ public class EducacionController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable long id) {
-        return educacions.eliminar(id);
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
+        HashMap<String,Boolean> estadoEliminado= new HashMap<>();
+        estadoEliminado.put(educacions.eliminar(id), true);
+        return ResponseEntity.ok(estadoEliminado);
     }
     
     @PutMapping("/editar/{id}")
@@ -53,9 +57,12 @@ public class EducacionController {
     }
     
     @GetMapping("/restore")
-    public void restaurar(){
-        //borrar los educacions actuales
+    public ResponseEntity<HashMap<String,Boolean>> restaurar(){
+        //borrar los contactos actuales
         //crear objetos por defecto
-        //guardar todos los nuevos educacions
+        //guardar todos los nuevos contactos
+         HashMap<String,Boolean> estadoContactoRestaurado= new HashMap<>();
+        estadoContactoRestaurado.put(educacions.restaurar(), true);
+        return ResponseEntity.ok(estadoContactoRestaurado);
     }
 }

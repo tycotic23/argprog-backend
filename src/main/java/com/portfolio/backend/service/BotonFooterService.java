@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.model.Botonfooter;
 import com.portfolio.backend.repository.BotonFooterRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,15 @@ public class BotonFooterService implements IBotonFooterService {
         return crear(nuevo);
     }
 
-    
+    @Override
+    public String restaurar() {
+        BotonFooters.deleteAll();
+        List<Botonfooter> original=new ArrayList<>();
+        original.add(new Botonfooter("https://github.com/tycotic23","../assets/githublogo-naranja.png"));
+        original.add(new Botonfooter("https://www.behance.net/tomasstevan","../assets/behance-logo.png"));
+        original.add(new Botonfooter("https://tycotic.itch.io/","../assets/itchio-logo.png"));
+        
+        BotonFooters.saveAll(original);
+        return "Restaurado con éxito";
+    }
 }

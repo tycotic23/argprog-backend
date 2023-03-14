@@ -20,4 +20,10 @@ public class Conocimiento {
     public Conocimiento(){
         
     }
+    
+    public Conocimiento(String nombre, String logourl, String categoria){
+        this.nombre=nombre;
+        this.logourl=logourl;
+        this.categoria=categoria;
+    }
 }

@@ -22,4 +22,11 @@ public class Contacto {
     public Contacto(){
         
     }
+    
+    public Contacto(String redsocial,String logourl, String url, String texto){
+        this.redsocial=redsocial;
+        this.logourl=logourl;
+        this.url=url;
+        this.texto=texto;
+    }
 }

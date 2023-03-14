@@ -12,4 +12,5 @@ public interface IContactoService {
     public String eliminar(String redSocial);
     public Contacto buscar(String redSocial);
     public Contacto editar(String redsocial,Contacto contacto);
+    public String restaurar();
 }

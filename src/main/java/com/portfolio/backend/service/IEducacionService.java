@@ -12,5 +12,5 @@ public interface IEducacionService {
     public String eliminar(long id);
     public Educacion buscar(long id);
     public Educacion editar(long id,Educacion educacion);
-    
+    public String restaurar();
 }
