@@ -51,11 +51,4 @@ public class UsuarioController {
     public Usuario buscar(@PathVariable String usuario) {
         return usuarios.buscar(usuario);
     }
-    
-    @GetMapping("/restore")
-    public void restaurar(){
-        //borrar los usuarios actuales
-        //crear objetos por defecto
-        //guardar todos los nuevos usuarios
-    }
 }
