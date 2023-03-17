@@ -49,7 +49,7 @@ public class ProyectoService implements IProyectoService{
     public String restaurar() {
         Proyectos.deleteAll();
         List<Proyecto> original=new ArrayList<>();
-        original.add(new Proyecto("../assets/captura-proyecto-1.png", "Proyecto 1: Mi Portfolio Web", "Proyecto presentado como trabajo final para curso de programación full Stack en el marco del programa \"Argentina Programa\" de la Nación. <br>Este proyecto tiene como consigna ser un portfolio web con la posibilidad de iniciar sesión y modificar elementos dentro del mismo a través de una interfaz simple. Permite modificar, crear y eliminar experiencias laborales, estudios y proyectos. <br> No admite eliminar ciertos elementos que ya van a existir por defecto (este proyecto, algunas experiencias laborales y educativas. <br> Sí permite agregar y luego eliminar o modificar esos nuevos elementos", false, ""));
+        original.add(new Proyecto("../assets/captura-proyecto-1.png", "Proyecto 1: Mi Portfolio Web", "Proyecto presentado como trabajo final para curso de programación full Stack en el marco del programa \"Argentina Programa\" de la Nación. \nEste proyecto tiene como consigna ser un portfolio web con la posibilidad de iniciar sesión y modificar elementos dentro del mismo a través de una interfaz simple. Permite modificar, crear y eliminar experiencias laborales, estudios y proyectos. \n No admite eliminar ciertos elementos que ya van a existir por defecto (este proyecto, algunas experiencias laborales y educativas. \n Sí permite agregar y luego eliminar o modificar esos nuevos elementos", false, ""));
         Proyectos.saveAll(original);
         return "Restaurado con éxito";
     }

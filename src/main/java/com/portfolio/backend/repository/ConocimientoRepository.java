@@ -12,10 +12,12 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface ConocimientoRepository extends JpaRepository<Conocimiento, String>  {
-    @Query(value = "select * from conocimiento c where c.categoria=:category", nativeQuery=true)
+public interface ConocimientoRepository extends JpaRepository<Conocimiento, Long>  {
+    @Query(value = "select * from conocimiento c where c.categoria_categoria=:category", nativeQuery=true)
     List<Conocimiento> getConocimientoListByCategory(String category);
     
-    @Query(value = "SELECT categoria FROM conocimiento c GROUP BY c.categoria", nativeQuery=true)
+    @Query(value = "SELECT categoria_categoria FROM conocimiento c GROUP BY c.categoria_categoria", nativeQuery=true)
     List<String> getCategoryList();
+    
+    Long deleteByCategoria_id(long id);
 }

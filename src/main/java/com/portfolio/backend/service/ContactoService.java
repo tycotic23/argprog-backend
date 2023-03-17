@@ -40,7 +40,7 @@ public class ContactoService implements IContactoService{
 
     @Override
     public Contacto editar(String redSocial, Contacto contacto) {
-        contacto.setRedsocial(redSocial);
+        Contactos.deleteById(redSocial);
         return Contactos.save(contacto);
     }
     

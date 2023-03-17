@@ -4,11 +4,11 @@
  */
 package com.portfolio.backend.controller;
 
+import com.portfolio.backend.model.Categoria;
 import com.portfolio.backend.model.Conocimiento;
 import com.portfolio.backend.service.ConocimientoService;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,27 +34,59 @@ public class ConocimientoController {
     public Conocimiento crear(@RequestBody Conocimiento conocimiento) {
         return conocimientos.crear(conocimiento);
     }
-
-    @GetMapping("/traer")
-    public Map<String,List<Conocimiento>> verTodos() {
-        return conocimientos.agruparPorCategoria();
+    
+    @PostMapping("/crearcategoria")
+    public Categoria crearCategoria(@RequestBody Categoria categoria) {
+        return conocimientos.crearCategoria(categoria);
     }
 
-    @DeleteMapping("/eliminar/{nombre}")
-    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String nombre) {
+    @GetMapping("/traer")
+    public List<Conocimiento> verTodos() {
+        return conocimientos.verTodos();
+    }
+    
+    @GetMapping("/traercategorias")
+    public List<Categoria> verCategorias() {
+        return conocimientos.verCategorias();
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
-        estadoEliminado.put(conocimientos.eliminar(nombre), true);
+        estadoEliminado.put(conocimientos.eliminar(id), true);
         return ResponseEntity.ok(estadoEliminado);
     }
     
-    @PutMapping("/editar/{nombre}")
-    public Conocimiento editar(@PathVariable String nombre, @RequestBody Conocimiento conocimiento) {
-        return conocimientos.editar(nombre, conocimiento);
+    @DeleteMapping("/eliminarcategoria/{id}")
+    public ResponseEntity<HashMap<String,Boolean>> eliminarCategoria(@PathVariable long id) {
+        HashMap<String,Boolean> estadoEliminado= new HashMap<>();
+        estadoEliminado.put(conocimientos.eliminarCategoria(id), true);
+        return ResponseEntity.ok(estadoEliminado);
+    }
+    
+    @PutMapping("/editar/{id}")
+    public Conocimiento editar(@PathVariable long id, @RequestBody Conocimiento conocimiento) {
+        return conocimientos.editar(id, conocimiento);
+    }
+    
+      @PutMapping("/editarcategoria/{id}")
+    public Categoria editarCategoria(@PathVariable long id, @RequestBody Categoria categoria) {
+        return conocimientos.editarCategoria(id, categoria);
     }
 
-    @GetMapping("/traer/{nombre}")
-    public Conocimiento buscar(@PathVariable String nombre) {
-        return conocimientos.buscar(nombre);
+    @GetMapping("/traer/{id}")
+    public Conocimiento buscar(@PathVariable long id) {
+        return conocimientos.buscar(id);
+    }
+    
+     @GetMapping("/traercategoria/{id}")
+    public Categoria buscarCategoria(@PathVariable long id) {
+        return conocimientos.buscarCategoria(id);
+    }
+    
+    @GetMapping("/traercategoriabynombre/{nombre}")
+    public Categoria buscarCategoriabyNombre(@PathVariable String nombre) {
+        return conocimientos.buscarCategoriabyNombre(nombre);
     }
     
     @GetMapping("/restore")

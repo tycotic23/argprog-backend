@@ -5,7 +5,11 @@
 package com.portfolio.backend.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,17 +17,34 @@ import lombok.Setter;
 @Entity
 public class Conocimiento {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private long id;
     private String nombre;
     private String logourl;
-    private String categoria;
+    @ManyToOne
+    private Categoria categoria;
+    
+    public String getCategoriaCategoria(){
+        return categoria.getCategoria();
+    }
+    
+      public long getCategoriaId(){
+        return categoria.getId();
+    }
+    
+    public int getOrdenCategoria(){
+        return categoria.getOrden();
+    }
+    
+
     
     public Conocimiento(){
         
     }
     
-    public Conocimiento(String nombre, String logourl, String categoria){
+    public Conocimiento(String nombre, String logourl, Categoria categoria){
         this.nombre=nombre;
-        this.logourl=logourl;
+        this.logourl=logourl; 
         this.categoria=categoria;
     }
 }

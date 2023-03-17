@@ -8,7 +8,7 @@ import com.portfolio.backend.model.Botonfooter;
 import java.util.List;
 public interface IBotonFooterService {
       public Botonfooter crear(Botonfooter botonFooter);
-    public List<Botonfooter> verTodos();
+        public List<Botonfooter> verTodos();
     public String eliminar(String logo);
     public Botonfooter buscar(String logo);
     public Botonfooter reemplazar(String anterior,Botonfooter nuevo);

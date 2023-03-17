@@ -4,15 +4,16 @@
  */
 package com.portfolio.backend.service;
 
+import com.portfolio.backend.model.Categoria;
 import com.portfolio.backend.model.Conocimiento;
 import java.util.List;
 import java.util.Map;
 public interface IConocimientoService {
       public Conocimiento crear(Conocimiento conocimiento);
     public List<Conocimiento> verTodos();
-    public Map<String,List<Conocimiento>> agruparPorCategoria();
-    public String eliminar(String nombre);
-    public Conocimiento buscar(String nombre);
-    public Conocimiento editar(String nombre,Conocimiento conocimiento);
+    public Map<Categoria,List<Conocimiento>> agruparPorCategoria();
+    public String eliminar(long id);
+    public Conocimiento buscar(long id);
+    public Conocimiento editar(long id,Conocimiento conocimiento);
     public String restaurar();
 }

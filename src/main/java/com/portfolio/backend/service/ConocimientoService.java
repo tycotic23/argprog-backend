@@ -4,6 +4,7 @@
  */
 package com.portfolio.backend.service;
 
+import com.portfolio.backend.model.Categoria;
 import com.portfolio.backend.model.Conocimiento;
 import com.portfolio.backend.repository.ConocimientoRepository;
 import java.util.ArrayList;
@@ -18,60 +19,122 @@ import org.springframework.stereotype.Service;
 public class ConocimientoService implements IConocimientoService{
       @Autowired
     ConocimientoRepository Conocimientos;
+      
+      @Autowired
+      CategoriaService categorias;
 
     @Override
-    public Conocimiento crear(Conocimiento Conocimiento) {
-        return Conocimientos.save(Conocimiento); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Conocimiento crear(Conocimiento conocimiento) {
+        Categoria categoria;
+        //importante: la categoria debe crearse antes, si no existe dara error
+        categoria = categorias.buscar(conocimiento.getCategoriaId());
+        if (categoria==null) {
+            //antes de crear una ver que no exista con el mismo nombre
+            categoria = categorias.buscarPorNombre(conocimiento.getCategoriaCategoria());
+            if (categoria==null){
+                //crear categoria
+                Categoria nueva= conocimiento.getCategoria();
+                nueva.setId(categorias.crearId());
+                nueva=categorias.crear(nueva);
+                conocimiento.setCategoria(nueva);
+            }
+            else{
+                //categoria.setId(116);
+                conocimiento.setCategoria(categoria);
+            }
+        }
+        return Conocimientos.save(conocimiento); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Conocimiento> verTodos() {
         return Conocimientos.findAll(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public List<Categoria> verCategorias(){
+        return categorias.sortByOrden();
+    }
+    
+    public Categoria crearCategoria(Categoria categoria){
+        
+        return categorias.crear(categoria);
+    }
+    
+    public String eliminarCategoria(long id){
+        //antes de eliminar, hay que quitar todos los conocimientos que tengan esa categoria
+        List<Conocimiento> conocimientosBorrar = categorias.buscar(id).getConocimientos();
+        for (Conocimiento con:conocimientosBorrar){
+            eliminar(con.getId());
+        }
+        //eliminar categoria
+        return categorias.eliminar(id);
+    }
+    
+    
+
+    
+    public Categoria editarCategoria(long id, Categoria categoria) {
+        return categorias.editar(id, categoria);
+    }
 
     @Override
-    public String eliminar(String nombre) {
-        Conocimientos.deleteById(nombre); 
+    public String eliminar(long id) {
+        Conocimientos.deleteById(id); 
         return "Borrado";
     }
 
     @Override
-    public Conocimiento buscar(String nombre) {
-        return Conocimientos.findById(nombre).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Conocimiento buscar(long id) {
+        return Conocimientos.findById(id).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public Categoria buscarCategoria(long id) {
+        return categorias.buscar(id);
+    }
+    
+    public Categoria buscarCategoriabyNombre(String nombre) {
+        return categorias.buscarPorNombre(nombre);
     }
 
     @Override
-    public Conocimiento editar(String nombre, Conocimiento conocimiento) {
-        conocimiento.setNombre(nombre);
+    public Conocimiento editar(long id, Conocimiento conocimiento) {
+        conocimiento.setId(id);
         return Conocimientos.save(conocimiento);
     }
 
     @Override
-    public Map<String,List<Conocimiento>> agruparPorCategoria() {
-        Map<String,List<Conocimiento>> conocimientosAgrupados=new HashMap<>();
-        for (String category:Conocimientos.getCategoryList()){
-            conocimientosAgrupados.put(category,Conocimientos.getConocimientoListByCategory(category));
-        }
+    public Map<Categoria,List<Conocimiento>> agruparPorCategoria() {
+        Map<Categoria,List<Conocimiento>> conocimientosAgrupados=new HashMap<>();
         return conocimientosAgrupados;
     }
+    
     
     @Override
     public String restaurar() {
         Conocimientos.deleteAll();
+        categorias.restaurar();
         List<Conocimiento> original=new ArrayList<>();
-        original.add(new Conocimiento("C/C++", "assets/lenguajes-01.png", "Panel1"));
-        original.add(new Conocimiento("Java", "assets/lenguajes-02.png", "Panel1"));
-        original.add(new Conocimiento("SQL", "assets/lenguajes-06.png", "Panel1"));
-        original.add(new Conocimiento("HTML", "assets/lenguajes-04.png", "Panel2"));
-        original.add(new Conocimiento("Javascript", "assets/lenguajes-05.png", "Panel2"));
-        original.add(new Conocimiento("CSS", "assets/lenguajes-07.png", "Panel2"));
-        original.add(new Conocimiento("Spring Boot", "assets/lenguajes-03.png", "Panel3"));
-        original.add(new Conocimiento("Angular", "assets/lenguajes-08.png", "Panel3"));
-        original.add(new Conocimiento("Photoshop", "assets/lenguajes-09.png", "Panel4"));
-        original.add(new Conocimiento("Illustrator", "assets/lenguajes-10.png", "Panel4"));
-        original.add(new Conocimiento("Blender", "assets/lenguajes-11.png", "Panel4"));
-        original.add(new Conocimiento("After Effects", "assets/lenguajes-12.png", "Panel4"));
-        Conocimientos.saveAll(original);
+        //importante: primero restaurar Categoria
+        Categoria lenguajes=new Categoria("Lenguajes",0);
+        Categoria front=new Categoria("Front End",1);
+        Categoria frameworks=new Categoria("Frameworks",2);
+        Categoria diseño=new Categoria("Diseño",3);
+        original.add(new Conocimiento("C/C++", "assets/lenguajes-01.png", lenguajes));
+        original.add(new Conocimiento("Java", "assets/lenguajes-02.png", lenguajes));
+        original.add(new Conocimiento("SQL", "assets/lenguajes-06.png", lenguajes));
+        original.add(new Conocimiento("Javascript", "assets/lenguajes-05.png", lenguajes));
+        original.add(new Conocimiento("HTML", "assets/lenguajes-04.png", front));
+        original.add(new Conocimiento("Javascript", "assets/lenguajes-05.png", front));
+        original.add(new Conocimiento("CSS", "assets/lenguajes-07.png", front));
+        original.add(new Conocimiento("Spring Boot", "assets/lenguajes-03.png", frameworks));
+        original.add(new Conocimiento("Angular", "assets/lenguajes-08.png",frameworks));
+        original.add(new Conocimiento("Photoshop", "assets/lenguajes-09.png", diseño));
+        original.add(new Conocimiento("Illustrator", "assets/lenguajes-10.png", diseño));
+        original.add(new Conocimiento("Blender", "assets/lenguajes-11.png", diseño));
+        original.add(new Conocimiento("After Effects", "assets/lenguajes-12.png", diseño));
+        for (Conocimiento conocimiento:original){
+            crear(conocimiento);
+        }
         return "Restaurado con éxito";
     }
 

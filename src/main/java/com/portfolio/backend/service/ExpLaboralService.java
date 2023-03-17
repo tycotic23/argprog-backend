@@ -49,7 +49,7 @@ public class ExpLaboralService implements IExpLaboralService{
         ExpLaborals.deleteAll();
         List<Explaboral> original=new ArrayList<>();
         original.add(new Explaboral("../assets/logo-SD.png", "Asistente de producción", "", "Sonidos Distantes Producciones", "Gestión administrativa para productora musical dedicada a eventos empresariales y particulares.", "Noviembre 2022", "Actualmente"));
-        original.add(new Explaboral("\"../assets/logo-soluciones-practicas.png\"", "Diseñador Gráfico", "", "Soluciones Prácticas - Estudio de Diseño", "Diseñador gráfico freelance.", "Noviembre 2022", "Actualmente"));
+        original.add(new Explaboral("../assets/logo-soluciones-practicas.png", "Diseñador Gráfico", "", "Soluciones Prácticas - Estudio de Diseño", "Diseñador gráfico freelance.", "Noviembre 2022", "Actualmente"));
         original.add(new Explaboral("../assets/logo-ate.png", "Profesor de taller", "", "A.T.E. - Asociación Trabajadores del Estado", "Profesor de taller para adultos mayores sobre uso de celulares", "2019", "Actualmente (interrumpido durante pandemia)"));
         original.add(new Explaboral("../assets/logo-vox.jpg", "Promoción de derechos", "", "VOX Asociación Civil", "Voluntario en organización LGBT sin fines de lucro. Promotor de derechos, charlas y talleres", "2018", "2020"));
         ExpLaborals.saveAll(original);
