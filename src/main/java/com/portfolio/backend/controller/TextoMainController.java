@@ -39,21 +39,21 @@ public class TextoMainController {
         return textoMains.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{nombre}")
-    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String nombre) {
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
-        estadoEliminado.put(textoMains.eliminar(nombre), true);
+        estadoEliminado.put(textoMains.eliminar(id), true);
         return ResponseEntity.ok(estadoEliminado);
     }
     
-    @PutMapping("/editar/{anterior}")
-    public Textomain editar(@PathVariable String anterior, @RequestBody Textomain textoMain) {
-        return textoMains.reemplazar(anterior, textoMain);
+    @PutMapping("/editar/{id}")
+    public Textomain editar(@PathVariable long id, @RequestBody Textomain textoMain) {
+        return textoMains.editar(id, textoMain);
     }
 
-    @GetMapping("/traer/{nombre}")
-    public Textomain buscar(@PathVariable String nombre) {
-        return textoMains.buscar(nombre);
+    @GetMapping("/traer/{id}")
+    public Textomain buscar(@PathVariable long id) {
+        return textoMains.buscar(id);
     }
     
     @GetMapping("/restore")

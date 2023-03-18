@@ -28,29 +28,29 @@ public class BotonFooterService implements IBotonFooterService {
     }
 
     @Override
-    public String eliminar(String logo) {
-        BotonFooters.deleteById(logo); 
+    public String eliminar(long id) {
+        BotonFooters.deleteById(id); 
         return "Borrado";
     }
 
     @Override
-    public Botonfooter buscar(String botonFooter) {
-        return BotonFooters.findById(botonFooter).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Botonfooter buscar(long id) {
+        return BotonFooters.findById(id).orElse(null); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Botonfooter reemplazar(String anterior, Botonfooter nuevo) {
-        eliminar(anterior);
-        return crear(nuevo);
+    public Botonfooter editar(long id, Botonfooter botonFooter) {
+        botonFooter.setId(id);
+        return BotonFooters.save(botonFooter);
     }
 
     @Override
     public String restaurar() {
         BotonFooters.deleteAll();
         List<Botonfooter> original=new ArrayList<>();
-        original.add(new Botonfooter("https://github.com/tycotic23","../assets/githublogo-naranja.png"));
-        original.add(new Botonfooter("https://www.behance.net/tomasstevan","../assets/behance-logo.png"));
-        original.add(new Botonfooter("https://tycotic.itch.io/","../assets/itchio-logo.png"));
+        original.add(new Botonfooter("../assets/githublogo-naranja.png", "https://github.com/tycotic23"));
+        original.add(new Botonfooter("../assets/behance-logo.png","https://www.behance.net/tomasstevan"));
+        original.add(new Botonfooter("../assets/itchio-logo.png", "https://tycotic.itch.io/"));
         
         BotonFooters.saveAll(original);
         return "Restaurado con éxito";

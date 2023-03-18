@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface TextoMainRepository extends JpaRepository<Textomain, String>  {
+public interface TextoMainRepository extends JpaRepository<Textomain, Long>  {
     
 }

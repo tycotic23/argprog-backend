@@ -5,6 +5,8 @@
 package com.portfolio.backend.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,14 +15,18 @@ import lombok.Setter;
 @Entity
 public class Textomain {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private long id;
     private String nombre;
     private String texto;
     private String fotourl;
+    private String ubicacion;
     
-    public Textomain(String nombre, String texto, String fotourl){
+    public Textomain(String nombre, String texto, String fotourl, String ubicacion){
         this.nombre=nombre;
         this.texto=texto;
         this.fotourl=fotourl;
+        this.ubicacion=ubicacion;
     }
     
     public Textomain(){

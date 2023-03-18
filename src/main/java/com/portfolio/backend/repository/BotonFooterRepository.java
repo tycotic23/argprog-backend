@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface BotonFooterRepository extends JpaRepository<Botonfooter, String>  {
+public interface BotonFooterRepository extends JpaRepository<Botonfooter, Long>  {
     
 }

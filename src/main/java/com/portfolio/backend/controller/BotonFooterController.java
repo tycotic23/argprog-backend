@@ -39,21 +39,21 @@ public class BotonFooterController {
         return botonFooters.verTodos();
     }
 
-    @DeleteMapping("/eliminar/{logo}")
-    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String logo) {
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
-        estadoEliminado.put(botonFooters.eliminar(logo), true);
+        estadoEliminado.put(botonFooters.eliminar(id), true);
         return ResponseEntity.ok(estadoEliminado);
     }
     
-    @PutMapping("/editar/{anterior}")
-    public Botonfooter editar(@PathVariable String anterior, @RequestBody Botonfooter nuevo) {
-        return botonFooters.reemplazar(anterior, nuevo);
+    @PutMapping("/editar/{id}")
+    public Botonfooter editar(@PathVariable long id, @RequestBody Botonfooter botonFooter) {
+        return botonFooters.editar(id, botonFooter);
     }
 
-    @GetMapping("/traer/{logo}")
-    public Botonfooter buscar(@PathVariable String logo) {
-        return botonFooters.buscar(logo);
+    @GetMapping("/traer/{id}")
+    public Botonfooter buscar(@PathVariable long id) {
+        return botonFooters.buscar(id);
     }
     
     @GetMapping("/restore")

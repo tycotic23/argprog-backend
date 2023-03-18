@@ -9,8 +9,8 @@ import java.util.List;
 public interface ITextoMainService {
       public Textomain crear(Textomain textoMain);
     public List<Textomain> verTodos();
-    public String eliminar(String nombre);
-    public Textomain buscar(String nombre);
-    public Textomain reemplazar(String anterior,Textomain textoMain);
+    public String eliminar(long id);
+    public Textomain buscar(long id);
+    public Textomain editar(long id,Textomain textoMain);
     public String restaurar();
 }

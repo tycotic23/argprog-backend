@@ -9,8 +9,8 @@ import java.util.List;
 public interface IBotonFooterService {
       public Botonfooter crear(Botonfooter botonFooter);
         public List<Botonfooter> verTodos();
-    public String eliminar(String logo);
-    public Botonfooter buscar(String logo);
-    public Botonfooter reemplazar(String anterior,Botonfooter nuevo);
+    public String eliminar(long id);
+    public Botonfooter buscar(long id);
+    public Botonfooter editar(long id,Botonfooter botonFooter);
     public String restaurar();
 }
