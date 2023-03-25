@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class ProyectoController {
     @Autowired
     ProyectoService proyectos;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public Proyecto crear(@RequestBody Proyecto proyecto) {
         return proyectos.crear(proyecto);
@@ -39,6 +41,7 @@ public class ProyectoController {
         return proyectos.verTodos();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
@@ -46,6 +49,7 @@ public class ProyectoController {
         return ResponseEntity.ok(estadoEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{id}")
     public Proyecto editar(@PathVariable long id, @RequestBody Proyecto proyecto) {
         return proyectos.editar(id, proyecto);
@@ -56,6 +60,7 @@ public class ProyectoController {
         return proyectos.buscar(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los contactos actuales

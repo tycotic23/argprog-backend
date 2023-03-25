@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ public class IdiomaController {
     @Autowired
     IdiomaService idiomas;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public ResponseEntity<Idioma> crear(@RequestBody Idioma idioma) {
         if("".equals(idioma.getIdioma())) return new ResponseEntity<>(idioma,HttpStatus.LENGTH_REQUIRED);
@@ -42,6 +44,7 @@ public class IdiomaController {
         return idiomas.verTodos();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{idioma}")
     public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String idioma) {
         HashMap<String,Boolean> estadoIdiomaEliminado= new HashMap<>();
@@ -49,6 +52,7 @@ public class IdiomaController {
         return ResponseEntity.ok(estadoIdiomaEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{anterior}")
     public Idioma editar(@PathVariable String anterior, @RequestBody Idioma nuevo) {
         return idiomas.reemplazar(anterior, nuevo);
@@ -59,6 +63,7 @@ public class IdiomaController {
         return idiomas.buscar(idioma);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los idiomas actuales

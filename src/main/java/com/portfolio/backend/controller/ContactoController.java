@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class ContactoController {
     @Autowired
     ContactoService contactos;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public Contacto crear(@RequestBody Contacto contacto) {
         return contactos.crear(contacto);
@@ -38,7 +40,8 @@ public class ContactoController {
     public List<Contacto> verTodos() {
         return contactos.verTodos();
     }
-
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{nombre}")
     public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String nombre) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
@@ -46,6 +49,7 @@ public class ContactoController {
         return ResponseEntity.ok(estadoEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{nombre}")
     public Contacto editar(@PathVariable String nombre, @RequestBody Contacto contacto) {
         return contactos.editar(nombre, contacto);
@@ -56,6 +60,7 @@ public class ContactoController {
         return contactos.buscar(nombre);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los contactos actuales

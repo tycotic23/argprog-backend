@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class EducacionController {
      @Autowired
     EducacionService educacions;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public Educacion crear(@RequestBody Educacion educacion) {
         return educacions.crear(educacion);
@@ -39,6 +41,7 @@ public class EducacionController {
         return educacions.verTodos();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
@@ -46,6 +49,7 @@ public class EducacionController {
         return ResponseEntity.ok(estadoEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{id}")
     public Educacion editar(@PathVariable long id, @RequestBody Educacion educacion) {
         return educacions.editar(id, educacion);
@@ -56,6 +60,7 @@ public class EducacionController {
         return educacions.buscar(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los contactos actuales

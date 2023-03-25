@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class SkillController {
     @Autowired
     SkillService skills;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public Skill crear(@RequestBody Skill skill) {
         return skills.crear(skill);
@@ -39,6 +41,7 @@ public class SkillController {
         return skills.verTodos();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{skill}")
     public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable String skill) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
@@ -46,6 +49,7 @@ public class SkillController {
         return ResponseEntity.ok(estadoEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{anterior}")
     public Skill editar(@PathVariable String anterior, @RequestBody Skill nueva) {
         return skills.reemplazar(anterior, nueva);
@@ -56,6 +60,7 @@ public class SkillController {
         return skills.buscar(skill);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los contactos actuales

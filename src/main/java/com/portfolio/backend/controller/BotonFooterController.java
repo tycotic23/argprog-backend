@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class BotonFooterController {
     @Autowired
     BotonFooterService botonFooters;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public Botonfooter crear(@RequestBody Botonfooter botonFooter) {
         return botonFooters.crear(botonFooter);
@@ -39,6 +41,7 @@ public class BotonFooterController {
         return botonFooters.verTodos();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
@@ -46,6 +49,7 @@ public class BotonFooterController {
         return ResponseEntity.ok(estadoEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{id}")
     public Botonfooter editar(@PathVariable long id, @RequestBody Botonfooter botonFooter) {
         return botonFooters.editar(id, botonFooter);
@@ -56,6 +60,7 @@ public class BotonFooterController {
         return botonFooters.buscar(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los botonFooters actuales

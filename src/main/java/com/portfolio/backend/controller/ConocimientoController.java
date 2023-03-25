@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,11 +31,13 @@ public class ConocimientoController {
     @Autowired
     ConocimientoService conocimientos;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public Conocimiento crear(@RequestBody Conocimiento conocimiento) {
         return conocimientos.crear(conocimiento);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crearcategoria")
     public Categoria crearCategoria(@RequestBody Categoria categoria) {
         return conocimientos.crearCategoria(categoria);
@@ -50,6 +53,7 @@ public class ConocimientoController {
         return conocimientos.verCategorias();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<HashMap<String,Boolean>> eliminar(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
@@ -57,6 +61,7 @@ public class ConocimientoController {
         return ResponseEntity.ok(estadoEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminarcategoria/{id}")
     public ResponseEntity<HashMap<String,Boolean>> eliminarCategoria(@PathVariable long id) {
         HashMap<String,Boolean> estadoEliminado= new HashMap<>();
@@ -64,12 +69,14 @@ public class ConocimientoController {
         return ResponseEntity.ok(estadoEliminado);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{id}")
     public Conocimiento editar(@PathVariable long id, @RequestBody Conocimiento conocimiento) {
         return conocimientos.editar(id, conocimiento);
     }
     
-      @PutMapping("/editarcategoria/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/editarcategoria/{id}")
     public Categoria editarCategoria(@PathVariable long id, @RequestBody Categoria categoria) {
         return conocimientos.editarCategoria(id, categoria);
     }
@@ -89,6 +96,7 @@ public class ConocimientoController {
         return conocimientos.buscarCategoriabyNombre(nombre);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los conocimientos actuales
