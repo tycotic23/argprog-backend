@@ -41,12 +41,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-                <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-                <dependency>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-lang3</artifactId>
-                    <version>3.12.0</version>
-                </dependency>
                 <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -72,12 +66,6 @@
                     <artifactId>jjwt-jackson</artifactId>
                     <version>0.11.5</version>
                     <scope>runtime</scope>
-                </dependency>
-                <!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
-                <dependency>
-                    <groupId>jakarta.validation</groupId>
-                    <artifactId>jakarta.validation-api</artifactId>
-                    <version>3.0.2</version>
                 </dependency>
                 <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
                 <dependency>
