@@ -7,7 +7,7 @@
 'UTF-8'
 -protected
 -source
-'11'
+'17'
 -sourcepath
 'C:/Users/soltommy/Documents/NetBeansProjects/backend/src/main/java;C:/Users/soltommy/Documents/NetBeansProjects/backend/target/generated-sources/annotations'
 -author
@@ -21,8 +21,6 @@
 'UTF-8'
 -doctitle
 'backend 0.0.1-SNAPSHOT API'
--linkoffline
-'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/soltommy/Documents/NetBeansProjects/backend/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
@@ -179,25 +177,25 @@ C:\Users\soltommy\.m2\repository\org\springframework\spring-webmvc\6.0.6\spring-
 C:\Users\soltommy\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar = 1679456177118
 C:\Users\soltommy\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar = 1674526261405
 C:\Users\soltommy\Documents\NetBeansProjects\backend\src\main\java = 1678540629973
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\generated-sources\annotations = 1679848934506
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\allclasses-index.html = 1679849014068
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\allpackages-index.html = 1679849014095
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\copy.svg = 1679849014636
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\element-list = 1679849009892
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\help-doc.html = 1679849014593
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\index-all.html = 1679849014529
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\index.html = 1679849013235
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\jquery-ui.overrides.css = 1679849014775
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\member-search-index.js = 1679849014110
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\module-search-index.js = 1679849014099
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\overview-summary.html = 1679849014539
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\overview-tree.html = 1679849013185
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\package-search-index.js = 1679849014103
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\script.js = 1679849014633
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\search-page.js = 1679849014646
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\search.html = 1679849014534
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\search.js = 1679849014641
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\serialized-form.html = 1679849010851
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\stylesheet.css = 1679849014625
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\tag-search-index.js = 1679849014143
-C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\type-search-index.js = 1679849014106
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\generated-sources\annotations = 1679849409466
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\allclasses-index.html = 1679849491065
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\allpackages-index.html = 1679849491105
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\copy.svg = 1679849491450
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\element-list = 1679849486924
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\help-doc.html = 1679849491433
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\index-all.html = 1679849491407
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\index.html = 1679849490472
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\jquery-ui.overrides.css = 1679849491510
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\member-search-index.js = 1679849491162
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\module-search-index.js = 1679849491108
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\overview-summary.html = 1679849491417
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\overview-tree.html = 1679849490459
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\package-search-index.js = 1679849491112
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\script.js = 1679849491446
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\search-page.js = 1679849491460
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\search.html = 1679849491412
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\search.js = 1679849491456
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\serialized-form.html = 1679849487974
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\stylesheet.css = 1679849491442
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\tag-search-index.js = 1679849491194
+C:\Users\soltommy\Documents\NetBeansProjects\backend\target\apidocs\type-search-index.js = 1679849491155
