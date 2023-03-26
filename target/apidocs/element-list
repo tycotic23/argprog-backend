@@ -1,0 +1,15 @@
+com.portfolio.backend
+com.portfolio.backend.controller
+com.portfolio.backend.dto
+com.portfolio.backend.model
+com.portfolio.backend.repository
+com.portfolio.backend.security
+com.portfolio.backend.security.config
+com.portfolio.backend.security.controller
+com.portfolio.backend.security.dto
+com.portfolio.backend.security.entity
+com.portfolio.backend.security.enums
+com.portfolio.backend.security.jwt
+com.portfolio.backend.security.repository
+com.portfolio.backend.security.service
+com.portfolio.backend.service
