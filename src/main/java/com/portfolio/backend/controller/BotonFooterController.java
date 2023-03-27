@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/botonesfooter")
-@CrossOrigin(origins="http://localhost:4200/")
-//@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
+//@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="https://tomasstevanargprog.web.app")
 public class BotonFooterController {
     @Autowired
     BotonFooterService botonFooters;
@@ -59,8 +59,7 @@ public class BotonFooterController {
     public Botonfooter buscar(@PathVariable long id) {
         return botonFooters.buscar(id);
     }
-    
-    @PreAuthorize("hasRole('ADMIN')")
+
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los botonFooters actuales

@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/explaborales")
-@CrossOrigin(origins="http://localhost:4200/")
-//@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
+//@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="https://tomasstevanargprog.web.app")
 public class ExpLaboralController {
     @Autowired
     ExpLaboralService expLaborals;
@@ -59,8 +59,7 @@ public class ExpLaboralController {
     public Explaboral buscar(@PathVariable long id) {
         return expLaborals.buscar(id);
     }
-    
-    @PreAuthorize("hasRole('ADMIN')")
+
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los contactos actuales

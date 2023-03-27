@@ -56,18 +56,22 @@ public class ConocimientoService implements IConocimientoService{
     }
     
     public Categoria crearCategoria(Categoria categoria){
-        
         return categorias.crear(categoria);
     }
     
     public String eliminarCategoria(long id){
         //antes de eliminar, hay que quitar todos los conocimientos que tengan esa categoria
-        List<Conocimiento> conocimientosBorrar = categorias.buscar(id).getConocimientos();
+        List<Conocimiento> conocimientosBorrar = Conocimientos.findByCategoria_id(id);
         for (Conocimiento con:conocimientosBorrar){
             eliminar(con.getId());
         }
         //eliminar categoria
         return categorias.eliminar(id);
+    }
+    
+    public List<Conocimiento> ConocimientosbyCategoria(long id){
+        //return categorias.getConocimientos(id).get(0);
+        return Conocimientos.findByCategoria_id(id);
     }
     
     

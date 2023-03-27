@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin(origins="http://localhost:4200/")
-//@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
+//@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="https://tomasstevanargprog.web.app")
 public class EducacionController {
      @Autowired
     EducacionService educacions;
@@ -59,8 +59,7 @@ public class EducacionController {
     public Educacion buscar(@PathVariable long id) {
         return educacions.buscar(id);
     }
-    
-    @PreAuthorize("hasRole('ADMIN')")
+ 
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los contactos actuales

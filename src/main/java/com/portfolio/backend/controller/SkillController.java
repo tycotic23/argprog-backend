@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/skills")
-@CrossOrigin(origins="http://localhost:4200/")
-//@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
+//@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="https://tomasstevanargprog.web.app")
 public class SkillController {
     @Autowired
     SkillService skills;
@@ -60,7 +60,6 @@ public class SkillController {
         return skills.buscar(skill);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los contactos actuales

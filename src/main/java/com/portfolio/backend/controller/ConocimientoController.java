@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/conocimientos")
-@CrossOrigin(origins="http://localhost:4200/")
-//@CrossOrigin(origins="https://probando-firebase-tools.web.app/")
+//@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="https://tomasstevanargprog.web.app")
 public class ConocimientoController {
     @Autowired
     ConocimientoService conocimientos;
@@ -96,7 +96,11 @@ public class ConocimientoController {
         return conocimientos.buscarCategoriabyNombre(nombre);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/traerconocimientosbycategoria/{id}")
+    public List<Conocimiento> conocimientosByCategoria(@PathVariable long id) {
+        return conocimientos.ConocimientosbyCategoria(id);
+    }
+
     @GetMapping("/restore")
     public ResponseEntity<HashMap<String,Boolean>> restaurar(){
         //borrar los conocimientos actuales

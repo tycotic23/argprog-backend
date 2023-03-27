@@ -6,6 +6,7 @@ package com.portfolio.backend.service;
 
 
 import com.portfolio.backend.model.Categoria;
+import com.portfolio.backend.model.Conocimiento;
 import com.portfolio.backend.repository.CategoriaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
