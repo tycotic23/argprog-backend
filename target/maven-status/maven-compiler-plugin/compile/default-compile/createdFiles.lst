@@ -50,6 +50,7 @@ com\portfolio\backend\service\ITextoMainService.class
 com\portfolio\backend\security\jwt\JwtProvider.class
 com\portfolio\backend\controller\ConocimientoController.class
 com\portfolio\backend\service\IdiomaService.class
+.netbeans_automatic_build
 com\portfolio\backend\model\Textomain.class
 com\portfolio\backend\controller\EducacionController.class
 com\portfolio\backend\model\Subfooterdato.class
